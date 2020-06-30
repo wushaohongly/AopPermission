@@ -21,12 +21,16 @@ Android权限，做Android开发的都知道，申请权限虽然简单，但是
 #二、依赖配置
 项目 build.gradle
 ```
-allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+dependencies {
+		...
+		classpath 'org.aspectj:aspectjtools:1.9.5'
 	}
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
 ```
 app build.gradle
 ```
