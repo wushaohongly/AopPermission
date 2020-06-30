@@ -2,7 +2,8 @@
 
 简书：
 
-#一、背景
+一、背景
+
 AOP （面向切面编程），Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。（百度百科）
 
 Android权限，做Android开发的都知道，申请权限虽然简单，但是每次使用都写一次繁琐的申请流程。当然，github上面也有很多比较优秀的开源权限申请框架。
@@ -17,8 +18,8 @@ Android权限，做Android开发的都知道，申请权限虽然简单，但是
 ![权限拒绝后](https://upload-images.jianshu.io/upload_images/16821601-e447f35d23636356.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
+二、依赖配置
 
-#二、依赖配置
 项目 build.gradle
 ```
 dependencies {
@@ -93,7 +94,9 @@ variants.all { variant ->
     }
 }
 ```
-#三、使用
+
+三、使用
+
 以申请拨打电话与读外置存储权限为例，click是一个需要拥有权限才能执行的方法，在click方法加入@PermissionsCheck（权限名称字符串数组）注解，执行click方法前就会申请注解生命的权限。
 
 *如果申请成功，则会执行click方法体，否则将不执行click方法体。*
@@ -104,7 +107,8 @@ variants.all { variant ->
     }
 ```
 
-#四、支持配置拒绝权限弹框
+四、支持配置拒绝权限弹框
+
 在三，当用户拒绝权限后，因为不执行click方法体，没有其他友好性提示，显然是不合理的。为了增加扩展性，类库支持拒绝权限后弹出自定义Dialog。
 自定义的Dialog须继承与类库的PermissionRefuseDialog。
 ```
@@ -132,12 +136,14 @@ public class MyRefuseDialog extends PermissionRefuseDialog {
         AopPermissionsConfig.setRefuseDialog(new MyRefuseDialog(this));
 ```
 
-#五、混淆配置
+五、混淆配置
+
 ```
 -keep class com.wushaohong.library.permissions.**{*;}
 ```
 
-#六、结语
-1、实测是运行在Android10系统，据了解，aspectjrt1.9.5最低支持Android7.0
+六、结语
+
+1、实测是运行在Android10系统，编译环境jdk1.8，据了解，aspectjrt1.9.5最低支持Android7.0
 2、不支持Kotlin语言（kotlin版已实现，有时间再整理上传）
 3、如有不合理之处，欢迎各位指点，本人感激不尽。
